@@ -76,6 +76,15 @@ public class TourListAdapter extends RecyclerView.Adapter<TourListAdapter.ViewHo
                 }
             });
 
+            tourFavIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    tourFavIcon.setBackgroundResource(R.drawable.ic_favorite_like);
+
+                }
+            });
+
 
 
         }
