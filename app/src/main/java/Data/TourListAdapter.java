@@ -19,7 +19,6 @@ import java.util.List;
 import Model.Tour;
 
 public class TourListAdapter extends RecyclerView.Adapter<TourListAdapter.ViewHolder> {
-
     private Activity activity;
     private List<Tour>tourList;
     private TourClickListener tourClickListener;
@@ -65,6 +64,8 @@ public class TourListAdapter extends RecyclerView.Adapter<TourListAdapter.ViewHo
             tourName=(TextView)itemView.findViewById(R.id.tourRowName);
             tourPrice=(TextView)itemView.findViewById(R.id.tourRowPrice);
             tourRowContainer=(RelativeLayout)itemView.findViewById(R.id.tourRowContainer);
+
+
 
 
             //Tour Clicked
