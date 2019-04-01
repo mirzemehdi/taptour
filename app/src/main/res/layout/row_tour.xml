@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+
+    android:elevation="4dp">
+
+
+    <RelativeLayout
+        android:id="@+id/tourRowContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/tourRowImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icherisheher" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="#6bffffff"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:background="@color/tour_row_name_background"
+            android:padding="10dp"
+            android:layout_height="80dp">
+
+
+            <TextView
+                android:id="@+id/tourRowName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Icheriseher tour"
+                android:textSize="20sp"
+                android:textAllCaps="true"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold|italic"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorWhite"
+                />
+            <TextView
+                android:id="@+id/tourRowPrice"
+                android:text="20₼"
+                android:textSize="20sp"
+                android:textAllCaps="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+
+                android:textStyle="bold|italic"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tourRowFav"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/tourRowFav"
+                android:layout_width="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_favorite_dislike"
+                android:layout_height="35dp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

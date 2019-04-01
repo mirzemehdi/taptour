@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#aacbff</color>
+    <color name="colorPrimaryDark">#92b6ef</color>
+    <color name="colorAccent">#296dd8</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="loginWithEmailButton">#44f731</color>
+    <color name="registerButton">#3956d6</color>
+    <color name="navigation_background">#7f333639</color>
+    <color name="tour_row_name_background">#9e393535</color>
+</resources>

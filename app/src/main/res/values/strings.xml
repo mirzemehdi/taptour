@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">TapTour</string>
+    <string name="loginWithEmailButton">Login with Email</string>
+    <string name="registerButton">Register</string>
+    <string name="usernameHintLogin">Username</string>
+    <string name="passwordHintLogin">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="asCompanyViewButton">As a Company</string>
+    <string name="asIndividualViewButton">Individual</string>
+    <string name="waitProgressDialogMessage">Please waiting...</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="nav_profile">Login or Register</string>
+    <string name="nav_booking">Booking</string>
+    <string name="nav_favourites">Favourites</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_signout">Sign out</string>
+    <string name="title_toolbar_main">Tours</string>
+    <string name="nav_home">Home</string>
+</resources>
