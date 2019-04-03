@@ -49,7 +49,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_favorite_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_message_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -59,8 +59,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ff0000" />
-                            <entry key="outputName" value="ic_favorite_like" />
+                            <entry key="outputName" value="ic_message" />
                             <entry key="sourceFile" value="C:\Users\Lenovo" />
                           </map>
                         </option>

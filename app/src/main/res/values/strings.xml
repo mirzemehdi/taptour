@@ -27,4 +27,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="booknowButton">Book Now</string>
+    <string name="tourDescriptionHeaderDetail">Tour Description</string>
+    <string name="exampleDescription">Azerbaijan’s capital is known both for its UNESCO-listed Old Town and its striking contemporary architecture. On this tour, discover Baku’s history and heritage; admire landmarks including the Flame Towers, Shirvanshahlar Palace, and Maiden Tower; take in the views from Upside hill; and sample typical Azerbaijan cuisine.</string>
+    <string name="toolbarTourDetailText">Tour Detail</string>
 </resources>

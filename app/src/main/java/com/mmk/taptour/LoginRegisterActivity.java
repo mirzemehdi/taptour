@@ -25,8 +25,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent passToRegister=new Intent(LoginRegisterActivity.this,MainActivity.class);
-                startActivity(passToRegister);
             }
         });
     }

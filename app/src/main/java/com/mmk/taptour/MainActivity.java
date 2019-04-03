@@ -1,5 +1,6 @@
 package com.mmk.taptour;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Toolbar toolbar;
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        navigationView.setCheckedItem(R.id.nav_home);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                         changeFragment(new FavoritesFragment());
                         break;
                     case R.id.nav_profile:
-
+                        Intent passToLoginRegister=new Intent(getApplicationContext(),LoginRegisterActivity.class);
+                        startActivity(passToLoginRegister);
                         break;
                     case R.id.nav_signout:
 

@@ -1,14 +1,17 @@
 package com.mmk.taptour.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.android.volley.Request;
@@ -19,6 +22,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.mmk.taptour.Interface.TourClickListener;
 import com.mmk.taptour.R;
+import com.mmk.taptour.TourDetailActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +61,7 @@ public class ToursFragment extends android.support.v4.app.Fragment {
     }
 
     public void setup(View v){
+
         queue= Volley.newRequestQueue(getContext());
         progressBar=v.findViewById(R.id.progressbar);
         toursRecylerView=(RecyclerView)v.findViewById(R.id.toursListRecylerView);
@@ -67,6 +72,7 @@ public class ToursFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view, int position, Tour tour) {
                //TODO Tour Clicked
+                tourClicked();
             }
         });
         toursRecylerView.setAdapter(tourListAdapter);
@@ -101,11 +107,15 @@ public class ToursFragment extends android.support.v4.app.Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
             }
         });
 
         queue.add(jsonArray);
 
+    }
+    public void tourClicked(){
+        Intent intent=new Intent(getContext(), TourDetailActivity.class);
+        startActivity(intent);
     }
 }

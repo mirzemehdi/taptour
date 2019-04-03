@@ -79,8 +79,13 @@ public class TourListAdapter extends RecyclerView.Adapter<TourListAdapter.ViewHo
             tourFavIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (tourFavIcon.getBackground().getConstantState()==
+                            activity.getResources().getDrawable(R.drawable.ic_favorite_dislike).getConstantState())
+                        tourFavIcon.setBackgroundResource(R.drawable.ic_favorite_like);
+                    else
+                        tourFavIcon.setBackgroundResource(R.drawable.ic_favorite_dislike);
 
-                    tourFavIcon.setBackgroundResource(R.drawable.ic_favorite_like);
+
 
                 }
             });
