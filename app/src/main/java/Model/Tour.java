@@ -1,6 +1,8 @@
 package Model;
 
-public class Tour {
+import java.io.Serializable;
+
+public class Tour  implements Serializable{
 
 
     private String id;
@@ -8,16 +10,18 @@ public class Tour {
     private String price;
     private String imageLink;
     private String companyId;
+    private String companyName;
 
     public Tour() {
     }
 
-    public Tour(String id, String name, String price, String imageLink, String companyId) {
+    public Tour(String id, String name, String price, String imageLink, String companyId,String companyName) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.imageLink = imageLink;
         this.companyId = companyId;
+        this.companyName=companyName;
     }
 
     public String getId() {
@@ -55,8 +59,15 @@ public class Tour {
     public String getCompanyId() {
         return companyId;
     }
-
     public void setCompanyId(String companyId) {
         this.companyId = companyId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

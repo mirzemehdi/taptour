@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/loginWarningTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/alertDialogForLoginTitle"
+        android:textAllCaps="true"
+        android:textColor="#000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/loginWarningText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginWarningTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="For this process you should login"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/loginWarningButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/loginWarningText"
+        android:layout_margin="5dp"
+        android:shadowColor="#000"
+        android:text="@string/loginWarningButtonText"
+        android:textColor="#000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:fButtonColor="@android:color/holo_orange_light"
+        app:shadowEnabled="true" />
+
+</RelativeLayout>

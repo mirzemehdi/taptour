@@ -3,7 +3,7 @@
     package="com.mmk.taptour">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -22,11 +22,10 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginRegisterActivity" />
-        <activity android:name=".TourDetailActivity"
-            android:parentActivityName=".MainActivity">
-
-
-        </activity>
+        <activity
+            android:name=".TourDetailActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".CompanyProfileActivity"></activity>
     </application>
 
 </manifest>

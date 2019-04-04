@@ -1,6 +1,14 @@
 package Constans;
 
+import Model.User;
+
 public class Constants {
+    /*  Current User
+    * If Current User is Null means it is guest account
+    *
+    * */
+    public static User currentUser=null;
+
 
     //Login Part
     public static final String LOGIN_URL="http://mirzemehdi.alwaysdata.net/taptour/login.php";
@@ -19,6 +27,9 @@ public class Constants {
     public static final String KEY_TOUR_PRICE="tour_price";
     public static final String KEY_TOUR_IMAGELINK="tour_imageLink";
     public static final String KEY_TOUR_COMPANYID="company_id";
+    public static final String KEY_TOUR_COMPANYNAME="companyName";
+
+
 
 
 

@@ -72,7 +72,7 @@ public class ToursFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view, int position, Tour tour) {
                //TODO Tour Clicked
-                tourClicked();
+                tourClicked(tour);
             }
         });
         toursRecylerView.setAdapter(tourListAdapter);
@@ -96,6 +96,7 @@ public class ToursFragment extends android.support.v4.app.Fragment {
                                 tour.setPrice(tourObject.getString(Constants.KEY_TOUR_PRICE));
                                 tour.setImageLink(tourObject.getString(Constants.KEY_TOUR_IMAGELINK));
                                 tour.setCompanyId(tourObject.getString(Constants.KEY_TOUR_COMPANYID));
+                                tour.setCompanyName(tourObject.getString(Constants.KEY_TOUR_COMPANYNAME));
                                 tourList.add(tour);
                                 tourListAdapter.notifyDataSetChanged();
                             } catch (JSONException e) {
@@ -107,6 +108,7 @@ public class ToursFragment extends android.support.v4.app.Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
             }
         });
@@ -114,8 +116,9 @@ public class ToursFragment extends android.support.v4.app.Fragment {
         queue.add(jsonArray);
 
     }
-    public void tourClicked(){
+    public void tourClicked(Tour clickedTour){
         Intent intent=new Intent(getContext(), TourDetailActivity.class);
+        intent.putExtra(getString(R.string.intentFromTourToTourDetail),clickedTour);
         startActivity(intent);
     }
 }
