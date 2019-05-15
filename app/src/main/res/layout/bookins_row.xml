@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="4dp"
+        app:cardBackgroundColor="#f2ecec"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <TextView
+                android:id="@+id/booking_tour_name"
+                android:layout_width="wrap_content"
+                android:text="Tour Name"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/booking_tour_price"
+                android:layout_width="wrap_content"
+                android:text="Price: 20$"
+                android:textSize="16sp"
+                android:textColor="#17a43b"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/booking_tour_name"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/booking_tour_price"
+                android:id="@+id/booking_tour_userId"
+                android:layout_width="wrap_content"
+                android:textColor="#d2bd19"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:text="By UserId: 1"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

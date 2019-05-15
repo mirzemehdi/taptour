@@ -13,10 +13,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Constans.Constants;
 import Model.Company;
@@ -34,6 +46,7 @@ public class TourDetailActivity extends AppCompatActivity {
     private User currentUser;
     private CardView companyProfileContainer;
     private String companyId="";
+    private RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +75,8 @@ public class TourDetailActivity extends AppCompatActivity {
         toolbarDetail=(Toolbar)findViewById(R.id.toolbarTourDetail);
         setSupportActionBar(toolbarDetail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        requestQueue= Volley.newRequestQueue(this);
+
         currentUser= Constants.currentUser;
         tour=(Tour)getIntent().getSerializableExtra(getString(R.string.intentFromTourToTourDetail));
         tourImage=(ImageView)findViewById(R.id.tourImgDetail);
@@ -74,7 +89,7 @@ public class TourDetailActivity extends AppCompatActivity {
         if (tour!=null){
 
             tourName.setText(tour.getName());
-            Picasso.get().load(tour.getImageLink()).placeholder(R.drawable.taptour).into(tourImage);
+            Picasso.get().load(tour.getImageLink()).placeholder(R.drawable.taptour_logo).into(tourImage);
             tourPrice.setText("$ "+tour.getPrice());
             tourCompanyName.setText(tour.getCompanyName());
             companyId=tour.getCompanyId();
@@ -94,6 +109,51 @@ public class TourDetailActivity extends AppCompatActivity {
     }
 
     private void bookingSuccess() {
+        final String userId=currentUser.getId();
+        final String tourId=tour.getId();
+        final String companyId=tour.getCompanyId();
+        //TODO get people Number from the user;
+        final String numberPeeople="1";
+
+        StringRequest data=new StringRequest(Request.Method.POST, Constants.ADDBOOKINGSLIST_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject resultObject=new JSONObject(response);
+                            String result=resultObject.getString(Constants.RESULT_TEXT);
+                            Log.d("ErrorMessage",result);
+                            if (result.equals(Constants.RESULT_SUCCESS)){
+                                Toast.makeText(TourDetailActivity.this,R.string.bookingSuccessText,Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(TourDetailActivity.this,R.string.bookingFailText,Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("ErrorMessage",error.getMessage());
+                Toast.makeText(TourDetailActivity.this,R.string.bookingFailText,Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put(Constants.KEY_BOOKINGS_COMPANYID,companyId);
+                params.put(Constants.KEY_BOOKINGS_TOURID,tourId);
+                params.put(Constants.KEY_BOOKINGS_USERID,userId);
+                params.put(Constants.KEY_BOOKINGS_NUMBERPEOPLE,numberPeeople);
+
+                return params;
+            }
+        };
+        requestQueue.add(data);
     }
 
     private void bookingFail() {

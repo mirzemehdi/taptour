@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                 />
+                android:text="company@gmail.com" />
 
 
         </android.support.design.widget.TextInputLayout>
@@ -63,9 +63,9 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/passwordInputEditTextLogin"
                 android:layout_width="match_parent"
-                android:inputType="textPassword"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:inputType="textPassword"
+                android:text="123" />
 
 
         </android.support.design.widget.TextInputLayout>

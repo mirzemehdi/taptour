@@ -35,4 +35,10 @@
     <string name="alertDialogForLoginTitle">Fail</string>
     <string name="loginWarningButtonText">Login</string>
     <string name="intentFromTourDetailToCompanyProfile">companyId</string>
+    <string name="bookingSuccessText">Booking is Success</string>
+    <string name="bookingFailText">Booking is Fail</string>
+    <string name="alertDialogTitleForSignOut">Sign Out</string>
+    <string name="alertDialogMessageForSignout">Do you really want to sign out?</string>
+    <string name="alertDialogOkButtonForSignout">Yes</string>
+    <string name="alertDialogCancelButtonForSignOut">Cancel</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.mmk.taptour;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Constans.Constants;
+import Model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -63,6 +65,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login() {
+
+        Constants.currentUser=null;
+        Constants.companyID=null;
+
         progressDialog.setMessage(getString(R.string.waitProgressDialogMessage));
         progressDialog.show();
         final String username=usernameEditText.getEditableText().toString();
@@ -77,6 +83,20 @@ public class LoginActivity extends AppCompatActivity {
                     if (result.equals(Constants.RESULT_SUCCESS)){
                         //TODO LOGIN IS SUCCESS
                         Toast.makeText(LoginActivity.this,"SUCCESS",Toast.LENGTH_SHORT).show();
+                        JSONObject userObject=resultObject.getJSONObject(Constants.KEY_USERTEXT);
+                        User user=new User();
+                        user.setId(userObject.getString(Constants.KEY_USERID));
+                        user.setUsername(userObject.getString(Constants.KEY_USERNAME));
+                        user.setPassword(userObject.getString(Constants.KEY_PASSWORD));
+                        user.setType(userObject.getString(Constants.KEY_USERTYPE));
+                        if (user.getType().equals("company"))
+                            Constants.companyID="1";
+                        Constants.currentUser=user;
+                        progressDialog.dismiss();
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
                     }
                     else if (result.equals(Constants.RESULT_FAIL)){
                         //TODO LOGIN IS FAIL
@@ -94,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                progressDialog.dismiss();
             }
 
 

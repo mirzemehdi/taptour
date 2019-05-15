@@ -5,22 +5,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.design.widget.NavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.mmk.taptour.Interface.LikeClickListener;
 import com.mmk.taptour.Interface.TourClickListener;
+import com.mmk.taptour.LoginRegisterActivity;
 import com.mmk.taptour.R;
 import com.mmk.taptour.TourDetailActivity;
 
@@ -30,11 +36,14 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Constans.Constants;
 import Data.TourListAdapter;
 import Model.Tour;
+import Model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,17 +77,104 @@ public class ToursFragment extends android.support.v4.app.Fragment {
         toursRecylerView.setHasFixedSize(true);
         toursRecylerView.setLayoutManager(new LinearLayoutManager(getContext()));
         tourList=new ArrayList<>();
+
         tourListAdapter=new TourListAdapter(getActivity(), tourList, new TourClickListener() {
+
+
             @Override
             public void onClick(View view, int position, Tour tour) {
-               //TODO Tour Clicked
+                //TODO Tour Clicked
                 tourClicked(tour);
             }
+
+            //TODO LIKE BUTTON Clicked
+        }, new LikeClickListener() {
+            @Override
+            public boolean onClick(Tour tour, boolean isFavourite) {
+                User currentUser=Constants.currentUser;
+                if (isFavourite) {
+
+                    if (currentUser != null) {
+                        //TODO ADD TO FAVORITES
+                        addFavoritesSuccess(tour);
+                        return true;
+                    } else {
+                        addFavoritesFail();
+                        return false;
+                    }
+                }
+                else {
+
+                    if (currentUser != null) {
+                        //TODO REMOVE FROM FAVORITES
+                        removeFavoritesSuccess();
+                        return true;
+                    } else {
+                        removeFavoritesFail();
+                        return false;
+                    }
+                    
+                }
+            }
         });
+
+
         toursRecylerView.setAdapter(tourListAdapter);
         addToursToList();
 
 
+    }
+
+    private void removeFavoritesFail() {
+        addFavoritesFail();
+    }
+
+    private void removeFavoritesSuccess() {
+        
+    }
+
+    //Add Favorites
+    private void addFavoritesSuccess(final Tour tour) {
+        StringRequest data=new StringRequest(Request.Method.POST, Constants.ADDFAVORITESLIST_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put(Constants.KEY_FAVORITES_TOURID,tour.getId());
+                params.put(Constants.KEY_FAVORITES_USERID,Constants.currentUser.getId());
+
+                return params;
+            }
+        };
+        queue.add(data);
+    }
+
+    private void addFavoritesFail() {
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        View view=getLayoutInflater().inflate(R.layout.login_warning_builder_view,null);
+        builder.setView(view);
+        final AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+        Button loginButton=view.findViewById(R.id.loginWarningButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                Intent intent =new Intent(getContext(),LoginRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void addToursToList(){
